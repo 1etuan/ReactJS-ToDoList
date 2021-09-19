@@ -1,47 +1,36 @@
-
 import './App.css';
 import React from 'react';
-
-
-
+import TodoList from './TodoList';
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { taskName: '', tasks: [] };
-  }
-  myTaskChangeHandler = (event) => {
-    this.setState({ taskName: event.target.value });
-    // console.log('Hello', event.target.value) 
-  }
-  addTask=()=> {
-    // console.log('addTask', this.state.taskName)
-    this.setState({ taskName: ''});
+	constructor(props) {
+		super(props);
+		this.state = { taskName: '', tasks: [] };
+	}
 
-    this.state.tasks.push( this.state.taskName)
-
-  }
-  render() {
-    return (
-      <div className="App">
-          <br />
-          TODO LIST
-          <br />
-          <div className="aligned">
-            <input type="text" value={this.state.taskName} onChange={this.myTaskChangeHandler} />
-            <i className=" fas fa-plus-square" onClick={() => this.addTask()}></i>
-          </div>
-
-          <br />
-          <ul>
-            {this.state.tasks.map((taskItem,index) => (
-              <li key={index} className="taskItem">{taskItem}</li>
-            ))}
-          </ul>
-
-
-      </div>
-    )
-  }
+	render() {
+		return (
+			<div className='App'>
+				<table border='1'>
+					<thead>
+						<tr>
+							<th>Nhiệm vụ 1</th>
+							<th>Nhiệm vụ 2</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style={{ verticalAlign: 'top' }}>
+								<TodoList  />
+							</td>
+							<td style={{ verticalAlign: 'top' }}>
+								<TodoList  />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		);
+	}
 }
 
 export default App;
